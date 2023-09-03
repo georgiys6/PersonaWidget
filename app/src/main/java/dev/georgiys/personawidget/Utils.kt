@@ -13,7 +13,7 @@ fun getWeather(context: Context){
     val client = OkHttpClient()
     val preference = PreferenceManager.getDefaultSharedPreferences(context)
     val request: Request = Request.Builder()
-        .url("http://api.openweathermap.org/data/2.5/weather?q=Barnaul,ru&APPID=3e11e9c80277f9d90862f6a6b57387a9")
+        .url("http://api.openweathermap.org/data/2.5/weather?q=Barnaul,ru&APPID=${BuildConfig.UrlKey}")
         .build()
 
     try {
