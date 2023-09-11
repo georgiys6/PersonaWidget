@@ -12,8 +12,11 @@ import java.io.IOException
 fun getWeather(context: Context){
     val client = OkHttpClient()
     val preference = PreferenceManager.getDefaultSharedPreferences(context)
+    val lat = preference.getString("latitude", "-200.0")
+    val lon = preference.getString("longitude", "-200.0")
     val request: Request = Request.Builder()
-        .url("http://api.openweathermap.org/data/2.5/weather?q=Barnaul,ru&APPID=${BuildConfig.UrlKey}")
+        //TODO you can get your api from https://openweathermap.org/api
+        .url("https://api.openweathermap.org/data/2.5/weather?lat=${lat}&lon=${lon}&APPID=${BuildConfig.UrlKey}")
         .build()
 
     try {

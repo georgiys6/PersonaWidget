@@ -48,21 +48,21 @@ class WidgetPerson4 : AppWidgetProvider() {
             )
             // Get the layout for the widget and attach an on-click listener
             // to the button.
-            val alarm = context?.getSystemService(Context.ALARM_SERVICE) as AlarmManager
-            alarm.cancel(pendingIntent)
-            val interval = (1000).toLong()
-            alarm.setRepeating(
-                AlarmManager.RTC,
-                SystemClock.elapsedRealtime(),
-                interval,
-                pendingIntent
-            )
+//            val alarm = context?.getSystemService(Context.ALARM_SERVICE) as AlarmManager
+//            alarm.cancel(pendingIntent)
+//            val interval = (1000 * 60 * 60).toLong()
+//            alarm.setRepeating(
+//                AlarmManager.RTC,
+//                SystemClock.elapsedRealtime(),
+//                interval,
+//                pendingIntent
+//            )
             val views = RemoteViews(
-                context.packageName,
+                context?.packageName,
                 R.layout.widget_persona_4
             ).apply {
                 setOnClickPendingIntent(R.id.mouth_persona_4, pendingIntent)
-                setImageViewBitmap(R.id.mouth_persona_4, textAsBitmap(getDate(), context))
+                setImageViewBitmap(R.id.mouth_persona_4, textAsBitmap(getDate(), context!!))
             }
 
             // Tell the AppWidgetManager to perform an update on the current
@@ -162,7 +162,7 @@ class WidgetPerson4 : AppWidgetProvider() {
         val baseline: Float = -paintDate.ascent() // ascent() is negative
         val width = (paintDate.measureText(text) + 0.5f).toInt() // round
         val height = (baseline + 5.5f).toInt()
-        val image = Bitmap.createBitmap(width + height + 400, height + 700, Bitmap.Config.ARGB_8888)
+        val image = Bitmap.createBitmap(width + height + 700, height + 700, Bitmap.Config.ARGB_8888)
 
         val canvas = Canvas(image)
         scope.launch { withContext(Dispatchers.IO){ getWeather(context) } }
