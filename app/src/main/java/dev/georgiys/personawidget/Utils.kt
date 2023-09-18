@@ -38,3 +38,7 @@ fun getWeather(context: Context){
         Log.e("checkConnect", "Fail connection: $e")
     }
 }
+
+
+// TODO https://api.github.com/repos/georgiys6/PersonaWidget/releases/latest
+// TODO https://github.com/georgiys6/PersonaWidget/releases/download/release.v1.1/app-release.apk
